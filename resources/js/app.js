@@ -33,8 +33,8 @@ Vue.use(VueFragmentPlugin)
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i)
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -42,6 +42,9 @@ Vue.use(VueFragmentPlugin)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import { globalMixins } from "./mixins/global";
 const app = new Vue({
   el: '#app',
+
+  mixins: [globalMixins],
 });
