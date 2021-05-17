@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,19 @@ use App\Http\Controllers\AuthController;
 Route::group(['middleware' => ['unauth']], function () {
     Route::post('/login', [AuthController::class, 'doLogin'])->name('dologin');
     Route::post('/signup', [AuthController::class, 'doSignup'])->name('dosignup');
+});
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('tasks')->group(function () {
+        Route::get('/fetchall/{id}', [TaskController::class, 'fetchall'])
+            ->whereNumber('id');
+
+        Route::post('/add', [TaskController::class, 'add']);
+
+        Route::get('/delete/{id}', [TaskController::class, 'delete'])
+            ->whereNumber('id');
+
+        Route::post('/edit/{id}', [TaskController::class, 'update'])
+            ->whereNumber('id');
+    });
 });

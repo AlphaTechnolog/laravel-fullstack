@@ -14,6 +14,11 @@
     <Navbar :logged="!!env.user"></Navbar>
     <Brs :n="3"></Brs>
     <div class="container">
+      @if (count($errors) > 0)
+        <errors
+          :errors="{{ json_encode($errors->all()) }}"
+        ></errors>
+      @endif
       @yield('content')
     </div>
   </div>

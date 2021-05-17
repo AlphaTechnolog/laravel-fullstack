@@ -11,7 +11,7 @@ use App\Models\User;
 class AuthController extends Controller
 {
     /**
-     * Do login action.
+     * Login a user in the app.
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -40,7 +40,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Do signup action.
+     * Register an user and logging it into app.
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -74,7 +74,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Do logout action.
+     * Logout an user session (invalidate it session and regenerate the token).
      * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

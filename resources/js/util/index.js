@@ -12,7 +12,7 @@ module.exports = class {
   path(path) {
     return path.replace(
       /\$BASEURL/g,
-      window.env.APP_URL
+      window.env.appUrl
     )
   }
 

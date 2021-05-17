@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,11 @@ Route::group(['middleware' => ['unauth']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::get('/logout', [AuthController::class, 'doLogout']);
+
+    Route::prefix('tasks')->group(function () {
+        Route::view('/add', 'tasks.add');
+
+        Route::get('/edit/{id}', [TaskController::class, 'editView'])
+            ->whereNumber('id');
+    });
 });

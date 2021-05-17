@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-  <Login></Login>
+  <add-task></add-task>
 @endsection

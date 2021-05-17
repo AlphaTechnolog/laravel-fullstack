@@ -1,5 +1,5 @@
 @extends('layouts.main')
 
 @section('content')
-  <Login></Login>
+  <edit-task :task='{{ $task }}'></edit-task>
 @endsection
