@@ -27,4 +27,12 @@ module.exports = class {
       thisIns[varName] = '';
     }, interval);
   }
+
+  baseError(thisIns, varName, msg, interval=3000) {
+    thisIns[varName] = msg;
+
+    setTimeout(() => {
+      thisIns[varName] = '';
+    }, interval);
+  }
 }
